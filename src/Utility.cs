@@ -10,12 +10,12 @@ namespace GenClass
     public static class Utility
     {
         /// <summary>
-        /// 
+        /// 寫入檔案
         /// </summary>
-        /// <param name="s"></param>
-        /// <param name="namespaceName"></param>
-        /// <param name="csName"></param>
-        /// <param name="propertyInfo"></param>
+        /// <param name="path">檔案路徑</param>
+        /// <param name="namespaceName">Namespace名稱</param>
+        /// <param name="csName">class名稱</param>
+        /// <param name="propertyInfo">property資訊, Key是欄位名, Value為欄位型別</param>
         public static void WriteFile(string path,string namespaceName, string csName, Dictionary<string, string> propertyInfo)
         {
             using (var fs = File.Open(string.Format(@"{0}\{1}.cs", path, csName), FileMode.OpenOrCreate))
