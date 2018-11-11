@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenClass
 {
@@ -18,11 +14,11 @@ namespace GenClass
         /// <param name="propertyInfo">property資訊, Key是欄位名, Value為欄位型別</param>
         public static void WriteFile(string path,string namespaceName, string csName, Dictionary<string, string> propertyInfo)
         {
-            using (var fs = File.Open(string.Format(@"{0}\{1}.cs", path, csName), FileMode.OpenOrCreate))
+            using (var fs = File.Open(string.Format(@"{0}{1}{2}.cs", path, ((path[path.Length - 1] != '\\') ? "\\" : ""), csName), FileMode.OpenOrCreate))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    sw.WriteLine("namespace GenClass");
+                    sw.WriteLine("namespace " + namespaceName);
                     sw.WriteLine("{");
                     sw.WriteLine("\tpublic class " + csName);
                     sw.WriteLine("\t{");
